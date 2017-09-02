@@ -1,0 +1,24 @@
+.signature {
+  background-color: white;
+}
+
+.signature-footer {
+  position: relative;
+  left: 10px;
+  bottom: 45px;
+  height: 100px;
+}
+
+.report_btn {
+	opacity: 1.0 !important;
+	margin-right: 20px;
+	cursor: default;
+}
+
+#canvas-container {
+   width: 100%;
+   text-align:center;
+}
+canvas {
+   display: inline;
+}

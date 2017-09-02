@@ -1,0 +1,116 @@
+<!-- Wrapper -->
+<section id="wrapper">
+  <!-- Admin account -->
+    <section id="account" class="wrapper">
+        <div class="inner">
+			<h2 class="major">Admin Page</h2>
+
+			<ul class="actions">
+			<form method="post">
+				<li><input type="submit" name="add-newuser" value="New User Account"></li>
+				<li><input type="submit" name="add-newadmin" value="New Admin Account"></li>
+				<li><input type="submit" name="accounts" value="Manage Accounts"></li>
+				<li><input type="submit" name="reports" value="Reports"></li>
+			</form>
+			</ul>
+
+			{{#if message}}
+				<p>{{ message }}</p>
+			{{/if}}
+
+			{{#if report}}
+				{{#each report}}
+					<h3>Statistics</h3>
+					<button type="button" class="report_btn" disabled>{{this.num_users}} accounts</button>
+					<button type="button" class="report_btn" disabled>{{this.num_awards}} awards</button><br/><br/>
+
+					<h3>Charts</h3>
+					<form method="post">
+						<input type="submit" name="awardschart" value="Types of Awards Created"><br/><br/>
+						<input type="submit" name="awardschart2" value="Users that Created Awards">
+					</form>
+				{{/each}}
+			{{/if}}
+
+			{{#if data}}
+			<div id="canvas-container">
+				<canvas id="myChart" width="600" height="500"></canvas>
+			</div>
+			<a href="data:text/csv;charset=utf-8,{{data}}" download="report1.csv">Download report as CSV</a>
+				<form>
+				<input type="hidden" id="num_edu" name="num_edu" value="{{num_edu}}">
+				<input type="hidden" id="num_inno" name="num_inno" value="{{num_inno}}">
+				<input type="hidden" id="num_ins" name="num_ins" value="{{num_ins}}">
+				<input type="hidden" id="num_team" name="num_team" value="{{num_team}}">
+				<input type="hidden" id="num_ty" name="num_ty" value="{{num_ty}}">
+				</form>
+
+			<script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+			<script src="./js/showawarddata.js"></script>
+			{{/if}}
+			
+			{{#if award_data}}
+			<table>
+				<tr>
+					<th>User</th>
+					<th>Number of Awards</th>
+				</tr>
+				{{#each award_data}}
+				<tr>
+					<td>{{this.User}}</td>
+					<td>{{this.Awards}}</td>
+				</tr>
+				{{/each}}
+			</table>
+			{{/if}}
+			
+			{{#if data2}}
+				<a href="data:text/csv;charset=utf-8,{{data2}}" download="report2.csv">Download report as CSV</a>
+			{{/if}}
+		</div>
+
+		{{#if account}}
+		<table>
+			<tr>
+				<th>Username</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email Address</th>
+				<th>Admin</th>
+				<th>Creation Time</th>
+				<form method="post">
+				<th><select class="selectpicker" data-style="btn-info" name="selectpicker">
+						<option value="">Sort By</option>
+						<option value="username">Username</option>
+						<option value="firstname">First Name</option>
+						<option value="lastname">Last Name</option>
+						<option value="email_address">Email Address</option>
+						<option value="admin_flag">Admin Type</option>
+						<option value="creation_time">Creation Time</option>
+					</select></th>
+					<th><input type="submit" name="sortby" value="Go">
+				</form></th>
+			</tr>
+			{{#each account}}
+				<td>{{this.username}}</td>
+				<td>{{this.firstname}}</td>
+				<td>{{this.lastname}}</td>
+				<td>{{this.email}}</td>
+				<td>{{this.admin_flag}}</td>
+				<td>{{this.timestamp}}</td>
+				<form method="post"><td>
+					<input type="submit" name="edit" value="Edit">
+					<input type="hidden" name="id" value="{{this.id}}">
+				</td></form>
+				<form method="post"><td>
+					<input type="submit" name="delete" value="Delete">
+					<input type="hidden" name="id" value="{{this.id}}">
+          <input type ="hidden" name="username" value="{{this.username}}">
+				</td></form>
+			</tr>
+			{{/each}}
+		</table>
+		{{/if}}
+
+	</section>
+</section>

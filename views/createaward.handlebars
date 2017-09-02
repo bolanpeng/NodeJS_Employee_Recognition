@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<!-- Wrapper -->
+<section id="wrapper">
+  <!-- Registration -->
+  <section id="register" class="wrapper">
+    <div class="inner">
+      <h2 class="major">Create New Award</h2>
+      <p>Select an award recipient and type, then provide a customized message to complete your award.</p>
+      <p>The award will be saved in your list of sent awards and will be sent to the recipient's email address.</p>
+      <div id="awardspot">
+        <form action="/new_award" method="POST">
+          <fieldset>
+			<div id="receiverdropDown">
+            <label>Award recipient:</label>
+            <select id="areceiver">
+            <option value="" disabled selected>Select</option>
+            </select></div>
+            <div id="typedropDown">
+            <label>Award type:</label>
+            <select id="alist">
+            <option value="" disabled selected>Select</option>
+            </select></div>
+             <div id="amessagediv">
+            <label>Award message:</label>
+            <input type="text" name="amessage" id="amessage"></div>
+            <div id="datetimediv">
+            <label>Award date and time:</label>
+			<input type="date" name="adate"  id="adate">
+			<input type="time" name="atime" id="atime"></div>
+			<div id="buttondiv">
+			<ul class="actions">
+            <li><input type="submit" value="Submit award" id="awardButton"></li>
+            <li><a href="/account" class="button">Back</a></li>
+          </ul>
+            
+          </fieldset>
+        </form>
+      </div>
+      <br>
+      <div id="awardResult"></div>
+    </div>
+  </section>
+</section>
+
+<script src="./js/createaward.js"></script>

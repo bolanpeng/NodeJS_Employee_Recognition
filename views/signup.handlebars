@@ -1,0 +1,49 @@
+<!-- Wrapper -->
+<section id="wrapper">
+  <!-- Registration -->
+    <section id="register" class="wrapper">
+      <div class="inner">
+        <h2 class="major">Create your account</h2>
+        <p>Start recognizing your co-workers for their contributions now! We just need a few details from you.</p>
+        {{#if message}}
+          <div>{{ message }}</div>
+        {{/if}}
+        <form id="register" method="post" action="/signup">
+          <div class="field">
+            <label for="email">Username</label>
+            <input type="text" name="username" id="username" required />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+          <div class="field">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" name="confirm-password" id="confirm-password" required />
+          </div>
+          <div class="field">
+            <label for="firstname">First Name</label>
+            <input type="text" name="firstname" id="firstname" required />
+          </div>
+          <div class="field">
+            <label for="lastname">Last Name</label>
+            <input type="text" name="lastname" id="lastname" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <label for="signature">Signature</label>
+          <div id=signature-wrapper>
+            <canvas id="signature" name="signature" class="signature" width=700 height=100></canvas>
+            <button type="button" class="button small signature-footer" id="clearButton">Clear</button>
+          </div>
+          <input type="hidden" name="sigData" id="sigData"/>
+          <ul class="actions">
+            <li><input class="special" type="submit" id="complete-registration" value="Complete Registration" /></li>
+            <li><a href="/login" class="button login-button">Already have an account?</a></li>
+          </ul>
+        </form>
+      </div>
+    </section>
+</section>
